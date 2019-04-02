@@ -1,0 +1,34 @@
+.card-img svg {
+  width: 100px;
+  height: 100px;
+}
+
+.testimonials3 {
+  background: white;
+}
+
+.card {
+  display: inline;
+}
+
+.cutText {
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+.cardPadding { 
+  margin-bottom: 20px;
+}
+
+.videoIcon {
+  margin-right: 20px;
+}
+
+.videoIcon path {
+  fill: red;
+}
+
+.pb-3 {
+  padding-bottom: 0em!important;
+}
