@@ -537,144 +537,139 @@
         </div>
       </section>
     </main>
+  </body>
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    function fromArrayToObject(o) {
+      // console.log("🚀", o);
+      var i = 0;
+      var obj = {};
 
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="assets/popper/popper.min.js"></script>
-    <script src="assets/tether/tether.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-      function fromArrayToObject(o) {
-        // console.log("🚀", o);
-        var i = 0;
-        var obj = {};
+      if (o.forEach) {
+        o.forEach(item => {
+          if (item.name) {
+            item.name = item.name.replace(":", "_");
+          }
 
-        if (o.forEach) {
-          o.forEach(item => {
-            if (item.name) {
-              item.name = item.name.replace(":", "_");
+          if (item.elements) {
+            if (Object.keys(obj).indexOf(item.name) > -1) {
+              if (!obj[item.name].forEach) {
+                obj[item.name] = [obj[item.name]];
+              }
+              obj[item.name].push(fromArrayToObject(item.elements));
+            } else {
+              obj[item.name] = fromArrayToObject(item.elements);
             }
-
-            if (item.elements) {
+          } else {
+            if (item.name) {
               if (Object.keys(obj).indexOf(item.name) > -1) {
                 if (!obj[item.name].forEach) {
                   obj[item.name] = [obj[item.name]];
                 }
-                obj[item.name].push(fromArrayToObject(item.elements));
+                obj[item.name].push(item.attributes);
               } else {
-                obj[item.name] = fromArrayToObject(item.elements);
+                obj[item.name] = item.attributes;
               }
             } else {
-              if (item.name) {
-                if (Object.keys(obj).indexOf(item.name) > -1) {
-                  if (!obj[item.name].forEach) {
-                    obj[item.name] = [obj[item.name]];
-                  }
-                  obj[item.name].push(item.attributes);
-                } else {
-                  obj[item.name] = item.attributes;
-                }
-              } else {
-                obj = item;
-              }
+              obj = item;
             }
-          });
-        } else {
-          Object.keys(o).forEach(key => {
-            if (o[key].forEach) {
-              obj[key] = fromArrayToObject(o[key]);
-            } else {
-              obj[key] = o[key];
-            }
-          });
-        }
-
-        return obj;
+          }
+        });
+      } else {
+        Object.keys(o).forEach(key => {
+          if (o[key].forEach) {
+            obj[key] = fromArrayToObject(o[key]);
+          } else {
+            obj[key] = o[key];
+          }
+        });
       }
 
-      var app4 = new Vue({
-        el: "#app-main",
-        data: {
-          youtubeFollowersCount: 0,
-          instagramFollowersCount: 0,
-          youtubeVideos: [],
-          youtubeFollowers: 20,
-          linkFacebook: "https://www.facebook.com/rusofacilconliza/",
-          linkInstagram: "https://instagram.com/rusofacilconliza",
-          linkYoutube:
-            "https://www.youtube.com/channel/UC8zvily1gKWn2TP1rFvYgEg?sub_confirmation=1",
-          linkCurso: "https://cursos-de-ruso.teachable.com/courses/527737/",
-          comment1: `/comments/comment000${parseInt(
-            Math.random() * 17 + 1
-          )}.png`,
-          comment2: `/comments/comment000${parseInt(
-            Math.random() * 17 + 1
-          )}.png`,
-          instagramMetadata: {}
-        },
-        created: function() {
-          this.fetchMetadata().then(function() {});
-        },
-        filters: {
-          tohq: function(value) {
-            return value.replace("hqdefault", "maxresdefault");
-          },
-          limitText: function(value) {
-            return value.slice(0, 20) + "...";
-          }
-        },
-        methods: {
-          countUp: function() {
-            var self = this;
-            var instagramInterval = setInterval(function() {
-              self.instagramFollowersCount = parseInt(
-                parseFloat(self.instagramFollowersCount) + 21
-              );
-              if (self.instagramFollowersCount >= self.instagramFollowers) {
-                clearInterval(instagramInterval);
-                self.instagramFollowersCount =
-                  (self.instagramFollowersCount / 1000).toFixed(2) + " K";
-              }
-            }, 0.01);
-            var youtubeInterval = setInterval(function() {
-              self.youtubeFollowersCount = parseInt(
-                parseFloat(self.youtubeFollowersCount) + 11
-              );
-              if (self.youtubeFollowersCount >= self.youtubeFollowers) {
-                clearInterval(youtubeInterval);
-                self.youtubeFollowersCount =
-                  (self.youtubeFollowersCount / 1000).toFixed(2) + " K";
-              }
-            }, 0.01);
-          },
-          fetchMetadata: function() {
-            var self = this;
-            return fetch("https://db.elizabethevtushenko.com/data.json", {
-              method: "GET",
-              cache: "no-cache"
-            })
-              .then(function(response) {
-                return response.json();
-              })
-              .then(function(data) {
-                // console.log("data", data);
-                console.log("obj", fromArrayToObject(data));
-                self.instagramMetadata = data.instagramMetadata;
-                self.instagramFollowers =
-                  parseFloat(self.instagramMetadata.followers) * 1000;
-                self.youtubeFollowers =
-                  parseFloat(data.youtubeFollowers.replace(",", ".")) * 1000;
-                self.youtubeVideos = fromArrayToObject(
-                  data.youtubeVideos
-                ).elements.feed.entry;
+      return obj;
+    }
 
-                self.countUp();
-              });
-          }
+    var app4 = new Vue({
+      el: "#app-main",
+      data: {
+        youtubeFollowersCount: 0,
+        instagramFollowersCount: 0,
+        youtubeVideos: [],
+        youtubeFollowers: 20,
+        linkFacebook: "https://www.facebook.com/rusofacilconliza/",
+        linkInstagram: "https://instagram.com/rusofacilconliza",
+        linkYoutube:
+          "https://www.youtube.com/channel/UC8zvily1gKWn2TP1rFvYgEg?sub_confirmation=1",
+        linkCurso: "https://cursos-de-ruso.teachable.com/courses/527737/",
+        comment1: `/comments/comment000${parseInt(Math.random() * 17 + 1)}.png`,
+        comment2: `/comments/comment000${parseInt(Math.random() * 17 + 1)}.png`,
+        instagramMetadata: {}
+      },
+      created: function() {
+        this.fetchMetadata().then(function() {});
+      },
+      filters: {
+        tohq: function(value) {
+          return value.replace("hqdefault", "maxresdefault");
+        },
+        limitText: function(value) {
+          return value.slice(0, 20) + "...";
         }
-      });
-    </script>
-  </body>
+      },
+      methods: {
+        countUp: function() {
+          var self = this;
+          var instagramInterval = setInterval(function() {
+            self.instagramFollowersCount = parseInt(
+              parseFloat(self.instagramFollowersCount) + 21
+            );
+            if (self.instagramFollowersCount >= self.instagramFollowers) {
+              clearInterval(instagramInterval);
+              self.instagramFollowersCount =
+                (self.instagramFollowersCount / 1000).toFixed(2) + " K";
+            }
+          }, 0.01);
+          var youtubeInterval = setInterval(function() {
+            self.youtubeFollowersCount = parseInt(
+              parseFloat(self.youtubeFollowersCount) + 11
+            );
+            if (self.youtubeFollowersCount >= self.youtubeFollowers) {
+              clearInterval(youtubeInterval);
+              self.youtubeFollowersCount =
+                (self.youtubeFollowersCount / 1000).toFixed(2) + " K";
+            }
+          }, 0.01);
+        },
+        fetchMetadata: function() {
+          var self = this;
+          return fetch("https://db.elizabethevtushenko.com/data.json", {
+            method: "GET",
+            cache: "no-cache"
+          })
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(data) {
+              // console.log("data", data);
+              console.log("obj", fromArrayToObject(data));
+              self.instagramMetadata = data.instagramMetadata;
+              self.instagramFollowers =
+                parseFloat(self.instagramMetadata.followers) * 1000;
+              self.youtubeFollowers =
+                parseFloat(data.youtubeFollowers.replace(",", ".")) * 1000;
+              self.youtubeVideos = fromArrayToObject(
+                data.youtubeVideos
+              ).elements.feed.entry;
+
+              self.countUp();
+            });
+        }
+      }
+    });
+  </script>
 </html>
