@@ -22,11 +22,26 @@
 }
 
 .videoIcon {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
+.facebookIcon {
+  margin-right: 10px;
+}
+
+.facebookIcon path {
+  fill: white;
+}
 .videoIcon path {
   fill: red;
+}
+
+.instagramIcon {
+  margin-right: 10px;
+}
+
+.instagramIcon path {
+  fill: #406a82;
 }
 
 .pb-3 {

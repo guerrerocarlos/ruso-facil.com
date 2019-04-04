@@ -1608,6 +1608,13 @@ body {
   padding-bottom: 90px;
   background: linear-gradient(45deg, #dbd4b8, #25aab2);
 }
+
+.cid-gumroad {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background: linear-gradient(45deg, #33eee1, #4e5170);
+}
+
 .cid-rlDqJ5Wi6R .btn {
   margin: 0 0 .5rem 0;
 }

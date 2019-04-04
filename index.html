@@ -150,27 +150,6 @@
               </div>
             </div>
           </div>
-          <!-- 
-            <div v-for="video in youtubeVideos" class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img :src="video['media_group']['media_thumbnail'].url | tohq" alt="Mobirise">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-7">
-                            No Coding
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
-                        </p>
-                    </div>
-                    <div class="mbr-section-btn text-center">
-                        <a href="https://mobirise.co" class="btn btn-primary display-4">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div> -->
         </div>
       </section>
 
@@ -227,7 +206,7 @@
         <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);"></div>
         <div class="container">
           <h2 class="pb-3 mbr-fonts-style mbr-white align-center display-2">
-            Los comentarios de la comunidad
+            Comentarios de la comunidad
           </h2>
           <h3 class="mbr-section-subtitle mbr-light pb-3 mbr-fonts-style mbr-white align-center display-5">
             Estos son los comentarios de los miembros activos de la comunidad
@@ -336,6 +315,52 @@
         </div>
       </section>
 
+      <section class="mbr-section info2 cid-gumroad" id="info2-e">
+        <div class="container">
+          <div class="row main justify-content-center">
+            <div class="media-container-column col-12 col-lg-3 col-md-4">
+              <div class="mbr-section-btn align-left py-4">
+                <a class="btn btn-primary display-4" v-bind:href="linkGumroad">
+                  <span class="mbr-iconfont"></span>
+                  Descargar
+                </a>
+              </div>
+            </div>
+            <div class="media-container-column title col-12 col-lg-7 col-md-6">
+              <h2 class="align-right mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+                Guias de aprendizaje
+              </h2>
+              <h3 class="mbr-section-subtitle align-right mbr-light mbr-white mbr-fonts-style display-5">
+                <u>Guias en PDF</u> para complementar tu aprendizaje
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="features3 cid-rlDnlNNKlg" id="instagram">
+        <div class="container">
+          <div class="row">
+            <div v-for="video in instagramPosts" class="col-md-4">
+              <div class="card-wrapper cardPadding">
+                <a :href="video.url">
+                  <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" :src="video.image" alt="{video.text}">
+                    <div class="card-body youtubeCardFooters">
+                      <div class="card-text boldFont cutText">
+                        <svg class="instagramIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.231 0h-18.462c-1.529 0-2.769 1.24-2.769 2.769v18.46c0 1.531 1.24 2.771 2.769 2.771h18.463c1.529 0 2.768-1.24 2.768-2.771v-18.46c0-1.529-1.239-2.769-2.769-2.769zm-9.231 7.385c2.549 0 4.616 2.065 4.616 4.615 0 2.549-2.067 4.616-4.616 4.616s-4.615-2.068-4.615-4.616c0-2.55 2.066-4.615 4.615-4.615zm9 12.693c0 .509-.413.922-.924.922h-16.152c-.511 0-.924-.413-.924-.922v-10.078h1.897c-.088.315-.153.64-.2.971-.05.337-.081.679-.081 1.029 0 4.079 3.306 7.385 7.384 7.385s7.384-3.306 7.384-7.385c0-.35-.031-.692-.081-1.028-.047-.331-.112-.656-.2-.971h1.897v10.077zm0-13.98c0 .509-.413.923-.924.923h-2.174c-.511 0-.923-.414-.923-.923v-2.175c0-.51.412-.923.923-.923h2.174c.511 0 .924.413.924.923v2.175z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+                        {{ video.text }}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="mbr-section info2 cid-rlDqJ5Wi6R" id="info2-e">
         <div class="container">
           <div class="row main justify-content-center">
@@ -343,7 +368,7 @@
               <div class="mbr-section-btn align-left py-4">
                 <a class="btn btn-primary display-4" v-bind:href="linkFacebook">
                   <span class="mbr-iconfont"></span>
-                  Facebook
+                  <svg class="facebookIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg> Facebook
                 </a>
               </div>
             </div>
@@ -352,7 +377,7 @@
                 &#xA1;Unete a la comunidad!
               </h2>
               <h3 class="mbr-section-subtitle align-right mbr-light mbr-white mbr-fonts-style display-5">
-                Ruso F&#xE1;cil con Liza en Facebook
+                <u>Ruso F&#xE1;cil con Liza</u> en Facebook
               </h3>
             </div>
           </div>
@@ -367,7 +392,7 @@
                 Lista de correos
               </h2>
               <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                Escribe tu email y SUSCRIBETE</h3>
+                ¡Escribe tu email y dale Suscribir! :)</h3>
             </div>
           </div>
 
@@ -456,6 +481,7 @@
         instagramFollowersCount: 0,
         youtubeVideos: [],
         youtubeFollowers: 20,
+        linkGumroad: 'https://gumroad.com/liza',
         linkFacebook: "https://www.facebook.com/rusofacilconliza/",
         linkInstagram: "https://instagram.com/rusofacilconliza",
         linkYoutube:
@@ -502,7 +528,7 @@
         },
         fetchMetadata: function() {
           var self = this;
-          return fetch("https://db.elizabethevtushenko.com/data.json", {
+           fetch("https://db.elizabethevtushenko.com/data.json", {
             method: "GET",
             cache: "no-cache"
           })
@@ -522,6 +548,20 @@
               ).elements.feed.entry;
 
               self.countUp();
+            });
+
+             fetch("https://db.elizabethevtushenko.com/instagramPosts.json", {
+            method: "GET",
+            cache: "no-cache"
+          })
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(data) {
+              // console.log("data", data);
+              console.log("instagramPosts", fromArrayToObject(data));
+              self.instagramPosts = data;
+             
             });
         }
       }
