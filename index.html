@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/assets/socicon/css/styles.css">
     <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="stylesheet" href="/sso.css">
     <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="/custom.css">
     <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -479,6 +480,7 @@
       data: {
         youtubeFollowersCount: 0,
         instagramFollowersCount: 0,
+        instagramPosts: [],
         youtubeVideos: [],
         youtubeFollowers: 20,
         linkGumroad: 'https://gumroad.com/liza',
@@ -492,7 +494,7 @@
         instagramMetadata: {}
       },
       created: function() {
-        this.fetchMetadata().then(function() {});
+        this.fetchMetadata()
       },
       filters: {
         tohq: function(value) {
@@ -568,6 +570,7 @@
     });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137561107-1"></script>
+  <script async src="/sso.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
