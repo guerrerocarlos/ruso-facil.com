@@ -6,7 +6,7 @@ var button = document.createElement("a");
 
 fetch("https://auth.ruso-facil.com/user.json", {
   method: "GET",
-  withCredentials: true,
+  credentials: 'include',
   cache: "no-cache"
 })
   .then(function(response) {
